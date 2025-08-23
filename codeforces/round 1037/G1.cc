@@ -1,10 +1,3 @@
-# Brain-Training-Gym
-
-My training gym to prevent brain rot.
-
-## fast coding template
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -45,7 +38,33 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+    int n;
+    cin >> n;
+    int maxn = n + 2;
+    vector<int>a(maxn);
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    int ans = 0;
+    vector<int>cnt(maxn);
+    vector<int>sum(maxn);
+    vector<int>l(maxn);
+    vector<int>r(maxn);
+    l[0] = 0;  // can not be 1e9
+    r[n + 1] = -1e9;
+    for (int med = 1; med <= 100; med++) {
+        for (int i = 1; i <= n; i++) cnt[i] = a[i] < med ? -1 : 1;
+        for (int i = 1; i <= n; i++) sum[i] = sum[i - 1] + cnt[i];
+        for (int i = 1; i <= n; i++) l[i] = min(l[i - 1], sum[i]);
+        for (int i = n; i >= 1; --i) r[i] = max(r[i + 1], sum[i]);
+        for (int i = 1; i <= n; i++) {
+            if (r[i] - l[i - 1] >= 0) {
+                // debug(med, a[i]);
+                ans = max(ans, med - a[i]);
+            }
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {
@@ -59,5 +78,3 @@ int main() {
     while(t--) solve();
     return 0;
 }
-```
-

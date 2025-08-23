@@ -1,16 +1,9 @@
-# Brain-Training-Gym
-
-My training gym to prevent brain rot.
-
-## fast coding template
-
-```cpp
 #include <bits/stdc++.h>
+ 
 using namespace std;
-typedef long long ll;
-
+ 
 #define DEBUG 1
-
+ 
 #if DEBUG
 #define del cout << '\n'
 #define debug(...) _debug(#__VA_ARGS__, __VA_ARGS__)
@@ -43,15 +36,24 @@ void _debug(const char* names, Args&&... args) {
 #define del
 #define debug(...)
 #endif
-
+ 
 void solve() {
-    
+    int x;
+    cin >> x;
+    if (x < 10) {
+        cout << x << "\n";
+        return;
+    }
+    int ans = 9;
+    while(x) {
+        ans = min(ans, x % 10);
+        x /= 10;
+    }
+    std::cout << ans << std::endl;
 }
-
+ 
 int main() {
-    #ifndef ONLINE_JUDGE 
-    freopen("in.txt", "r", stdin);
-    #endif
+    // freopen("in.txt", "r", stdin);
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     int t;
@@ -59,5 +61,3 @@ int main() {
     while(t--) solve();
     return 0;
 }
-```
-

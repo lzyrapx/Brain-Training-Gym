@@ -1,10 +1,3 @@
-# Brain-Training-Gym
-
-My training gym to prevent brain rot.
-
-## fast coding template
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -59,5 +52,3 @@ int main() {
     while(t--) solve();
     return 0;
 }
-```
-

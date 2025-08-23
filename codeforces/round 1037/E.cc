@@ -1,13 +1,6 @@
-# Brain-Training-Gym
-
-My training gym to prevent brain rot.
-
-## fast coding template
-
-```cpp
 #include <bits/stdc++.h>
+
 using namespace std;
-typedef long long ll;
 
 #define DEBUG 1
 
@@ -45,7 +38,37 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+    int n;
+    cin >> n;
+    vector<int>p(n);
+    vector<int>s(n);
+    for (int i = 0; i < n; i++) {
+        cin >> p[i];
+    }
+    for (int i = 0; i < n; i++) {
+        cin >> s[i];
+    }
+    vector<long long>a(n);
+    for (int i = 0; i < n; i++) {
+        a[i] = (long long) lcm(1LL * p[i], 1LL * s[i]);
+    }
+    long long x = 0;
+    for (int i = 0; i < n; i++) {
+        x = gcd(x, a[i]);
+        if (x != p[i]) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    x = 0;
+    for (int i = n - 1; i >= 0; --i) {
+        x = gcd(x, a[i]);
+        if (x != s[i]) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
 }
 
 int main() {
@@ -59,5 +82,3 @@ int main() {
     while(t--) solve();
     return 0;
 }
-```
-

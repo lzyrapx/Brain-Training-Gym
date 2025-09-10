@@ -37,6 +37,8 @@ void _debug(const char* names, Args&&... args) {
 #define debug(...)
 #endif
 
+// 给定一个数组，找到一个子数组，使得该子数组的中位数减去最小值最大，求出这个最大差值
+
 void solve() {
     int n;
     cin >> n;

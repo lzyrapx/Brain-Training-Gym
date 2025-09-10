@@ -37,8 +37,56 @@ void _debug(const char* names, Args&&... args) {
 #define debug(...)
 #endif
 
+// 给定一个数组，找到一个子数组，使得该子数组的中位数减去最小值最大，求出这个最大差值
+
+struct dsu {
+    vector<int>fa;
+    void init(int n) {
+        fa.resize(n);
+        for(int i = 0; i < n; i++) {
+            fa[i] = i;
+        }
+    }
+    int find(int x) {
+        return fa[x] == x ? x : fa[x] = find(fa[x]);
+    }
+} fa_l, fa_r;
+
 void solve() {
+    int n;
+    cin >> n;
+    vector<int>a(n), fa(n);
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+        a[i]--;
+        fa[i] = i;
+    }
+
+    fa_l.init(n + 1);
+    fa_r.init(n + 1);
     
+    sort(fa.begin(), fa.end(), [&](int i, int j){
+        return a[i] > a[j];
+    });
+
+    int ans = 0, mn = n;
+    for (auto x: fa) {
+        for (int i = 1; i <= 2; i++) {
+            int f = fa_l.find(x + 1);
+            if (f > 0) {
+                fa_l.fa[f] = fa_l.find(f - 1);
+                mn = min(mn, a[f - 1]);
+            }
+
+            f = fa_r.find(x);
+            if (f < n) {
+                fa_r.fa[f] = fa_r.find(f + 1);
+                mn = min(mn, a[f]);
+            }
+        }
+        ans = max(ans, a[x] - mn);
+    }
+    cout << ans << endl;
 }
 
 int main() {

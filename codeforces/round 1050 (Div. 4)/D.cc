@@ -38,7 +38,7 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+       
 }
 
 int main() {

@@ -38,7 +38,20 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+    int n, m;
+    cin >> n >> m;
+    int ans = m;
+    int pos = 0;
+    int a, b;
+    for (int i = 0; i < n; i++) {
+        cin >> a >> b;
+        int x = (a + b) % 2;
+        if (x != pos) {
+            ans--;
+        }
+        pos = x;
+    }
+    cout << ans << endl;
 }
 
 int main() {

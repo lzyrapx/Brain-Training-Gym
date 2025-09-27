@@ -38,7 +38,28 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-       
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    vector<int> odd;
+    ll even_sum = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        if (a[i] % 2 == 1) {
+            odd.push_back(a[i]);
+        } else {
+            even_sum += a[i];
+        }
+    }
+    ll ans = 0;
+    if (odd.size() > 0) {
+        ans += even_sum;
+    }
+    sort(odd.begin(), odd.end(), greater<>());
+    for (int i = 0; i < ((int)odd.size() + 1) / 2; i++) {
+        ans += odd[i];
+    }
+    cout << ans << endl;
 }
 
 int main() {

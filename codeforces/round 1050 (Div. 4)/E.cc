@@ -38,7 +38,36 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    vector<int>cnt(n + 1, 0);
+    for (int i = 0; i < n; i++) {
+        cnt[a[i]]++;
+    }
+    for (int i = 1; i <= n; i++) {
+        if (cnt[i] % k != 0) {
+            cout << "0" << endl;
+            return;
+        }
+        cnt[i] /= k;
+    }
+
+    // double pointer
+    ll ans = 0;
+    int l = 0;
+    for (int r = 0; r < n; r++) {
+        cnt[a[r]]--;
+        while (cnt[a[r]] < 0) {
+            cnt[a[l]]++;
+            l++;
+        }
+        ans += (r - l + 1);
+    }
+    cout << ans << endl;
 }
 
 int main() {

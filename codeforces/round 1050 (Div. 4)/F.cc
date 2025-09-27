@@ -1,3 +1,5 @@
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -38,7 +40,43 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
-    
+    int n;
+    cin >> n;
+    vector<deque<int>> a(n);
+    int k;
+    for (int i = 0; i < n; i++) {
+        cin >> k;
+        a[i].resize(k);
+        for (int j = 0; j < k; j++) {
+            cin >> a[i][j];
+        }
+    }
+    int row = 0;
+    while (row < n) {
+        sort(a.begin(), a.end());
+        for (auto x: a[row]) {
+            cout << x << " ";
+        }
+        int sz = a[row].size();
+        for (int i = 0; i < sz && a[row].size() > 0; i++) {
+            a[row].pop_front();
+        }
+        if (a[row].empty()) {
+            row++;
+        }
+        for (int i = 0; i < n; i++) {
+            if (a[i].empty()) {
+                continue;
+            }
+            for (int j = 0; j < sz && a[i].size() > 0; j++) {
+                a[i].pop_front();
+            }
+            if (a[i].empty()) {
+                row++;
+            }
+        }
+    }
+    cout << endl;
 }
 
 int main() {

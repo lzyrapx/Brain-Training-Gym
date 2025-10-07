@@ -37,8 +37,37 @@ void _debug(const char* names, Args&&... args) {
 #define debug(...)
 #endif
 
+// 题意：给你一个数组 a，求有多少个子数组，长度在 [l, r] 之间，恰好有 k 个不同的数
+
 void solve() {
-    
+    int n, k, l, r;
+    cin >> n >> k >> l >> r;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    auto f = [&](vector<int>&a, int k, int x) {
+        if (k < 0 || x <= 0) return 0LL;
+        ll ans = 0;
+        int n = a.size();
+        map<int, int> cnt;
+        int l = 0;
+        for (int r = 0; r < n; r++) {
+            cnt[a[r]]++;
+            while(r - l + 1 > x || (int)cnt.size() > k) {
+                cnt[a[l]]--;
+                if (cnt[a[l]] == 0) {
+                    cnt.erase(a[l]);
+                }
+                l++;
+            }
+            ans += 1LL * (r - l + 1);
+        }
+        return ans;
+    };
+    // ans = 滑动窗口 [l, r] 中不同元素 <= k 的的方案数 - 滑动窗口 [l, r] 中不同元素 <= k - 1 的的方案数
+    ll ans = (f(a, k, r) - f(a, k, l - 1)) - (f(a, k - 1, r) - f(a, k - 1, l - 1));
+    cout << ans << endl;
 }
 
 int main() {

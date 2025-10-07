@@ -38,7 +38,36 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
+    int h, d;
+    cin >> h >> d;
+
+    auto calc = [&](int x) {
+        // 1 + 2 + 3 + ..... + n
+        return 1LL * x * (x + 1) / 2;
+    };
     
+    // 步长是 1，到达终点的步数一样，都要 d * (d + 1) / 2 步。只是休息次数不一样。
+    // 二分休息次数
+    int l = 0, r = d;
+    while(l <= r) {
+        int mid = (l + r) >> 1;  // 休息次数
+
+        int cur_health = h + mid;  // 生命值
+
+        // 把休息当作连续走路的分界点，那么走路段数为 mid + 1，每一段最小步数就是 d / (mid + 1)
+        int dis = d / (mid + 1);
+        // debug(d, dis);
+
+        // 连续走 dis 步的次数为 mid + 1 - d % (mid + 1)， 连续 dis + 1 步的次数为 d % (mid + 1)
+        ll need = calc(dis) * (mid + 1 - d % (mid + 1)) + calc(dis + 1) * (d % (mid + 1));
+        if (need < cur_health) {
+            r = mid - 1;
+        } else {
+            l = mid + 1;
+        }
+        // debug(l, r);
+    }
+    cout << d + l << endl;
 }
 
 int main() {

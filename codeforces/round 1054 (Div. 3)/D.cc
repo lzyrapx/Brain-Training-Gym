@@ -38,7 +38,40 @@ void _debug(const char* names, Args&&... args) {
 #endif
 
 void solve() {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
     
+    int b_cnt = 0;
+    auto f = [&](string s) {
+        vector<int> ve;
+        int n = s.size();
+        for (int i = 0; i < n; i++) {
+            if (s[i] == 'a') {
+                ve.push_back(b_cnt);
+            } else {
+                b_cnt++;
+            }
+        }
+        ll ans = 0;
+        int sz = ve.size();
+        for (int i = 0; i < sz; i++) {
+            if (i < sz / 2) {
+                ans += ve[sz / 2] - ve[i];
+            } else {
+                ans += ve[i] - ve[sz / 2];
+            }
+        }
+        ve.clear();
+        return ans;
+    };
+    ll ans = f(s);
+    for (int i = 0; i < n; i++) {
+        if (s[i] == 'a') s[i] = 'b';
+        else s[i] = 'a';
+    }
+    cout << min(ans, f(s)) << endl;
 }
 
 int main() {

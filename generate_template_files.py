@@ -18,6 +18,22 @@ def read_template_from_file(template_file="template.cc"):
     # Default template if file doesn't exist or can't be read
     raise "template file doesn't exist or can't be read"
 
+def read_execute_script_from_file(template_file="run.sh"):
+    """
+    Read execute script from a file. If the file doesn't exist,
+    return a default template.
+    """
+    if os.path.exists(template_file):
+        try:
+            with open(template_file, 'r') as f:
+                return f.read()
+        except Exception as e:
+            print(f"Warning: Could not read execute script file: {e}")
+            print("Using default execute script instead.")
+    
+    # Default execute script if file doesn't exist or can't be read
+    raise "execute script file doesn't exist or can't be read"
+
 def generate_files(last_letter, output_path):
     # Convert input to uppercase
     last_letter = last_letter.upper()
@@ -64,6 +80,21 @@ def generate_files(last_letter, output_path):
     print(f"\nSuccessfully generated {len(filenames)} files from A.cc to {last_letter}.cc!")
     if output_path:
         print(f"Files saved to: {os.path.abspath(output_path)}")
+
+    # Read execute script content
+    execute_script = read_execute_script_from_file()
+    
+    # create execute script file test.sh
+    full_path = os.path.join(output_path, "test.sh")
+    with open(full_path, 'w') as f:
+        f.write(execute_script)
+        print(f"Generated {full_path}")
+    
+    full_path = os.path.join(output_path, "in.txt")
+    # create input file in.txt
+    with open(full_path, 'w') as f:
+        f.write("")
+        print(f"Generated {full_path}")
 
 if __name__ == "__main__":
     # Get user input

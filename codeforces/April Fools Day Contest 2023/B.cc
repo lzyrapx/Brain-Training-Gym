@@ -9,7 +9,10 @@ typedef long long ll;
 #endif
 
 void solve() {
-    
+    int n;
+    cin >> n;
+    if (n == 15 || n == 20 || n == 21) cout << "NO\n";
+    else cout << "YES\n";
 }
 
 int main() {
@@ -20,7 +23,7 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) solve();
     return 0;
 }

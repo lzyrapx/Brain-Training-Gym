@@ -8,8 +8,17 @@ typedef long long ll;
 #define debug(...) ((void)0)
 #endif
 
+// the code should be solve https://codeforces.com/contest/1722/problem/B
 void solve() {
-    
+    int n;
+    cin >> n;
+    string s1, s2;
+    cin >> s1 >> s2;
+    bool ok = true;
+    for(int i = 0; i < n; i++) {
+        ok &= !((s1[i] == 'R') ^ (s2[i] == 'R'));
+    }
+    cout << (ok ? "YES" : "NO") << '\n'; 
 }
 
 int main() {

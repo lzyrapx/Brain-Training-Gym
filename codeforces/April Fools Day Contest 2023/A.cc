@@ -9,7 +9,7 @@ typedef long long ll;
 #endif
 
 void solve() {
-    
+    cout << "security" << "\n";
 }
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) solve();
     return 0;
 }

@@ -8,8 +8,21 @@ typedef long long ll;
 #define debug(...) ((void)0)
 #endif
 
+vector<int> pi = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5};
+
 void solve() {
-    
+    int t;
+    cin >> t;
+    for (int z = 0; z < t; z++) {
+        int n = pi[z];
+        ll prod = 1;
+        for (int i = 0; i < n; i++) {
+            int x;
+            cin >> x;
+            prod *= x;
+        }
+        cout << prod << "\n";
+    }
 }
 
 int main() {
@@ -20,7 +33,7 @@ int main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) solve();
     return 0;
 }

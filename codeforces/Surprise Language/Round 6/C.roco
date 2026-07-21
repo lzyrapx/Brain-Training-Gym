@@ -1,0 +1,16 @@
+/* https://lodev.org/esolangs/roco/index.html */
+
+co calc{
+  mod [3] [2] [1]
+  eq [4] [3] 0
+  if [4] ac
+  add [2] [2] [0]
+}
+
+iin [0]
+iin [1]
+set [2] [0]
+ca calc
+iout [2]
+cout 10
+ac

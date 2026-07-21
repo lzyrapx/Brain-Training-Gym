@@ -1,0 +1,35 @@
+/* https://lodev.org/esolangs/roco/index.html */
+
+co print_yes{
+  cout 89
+  cout 69
+  cout 83
+  cout 10
+  ac
+}
+
+co print_no{
+  cout 78
+  cout 79
+  cout 10
+  ac
+}
+
+co check{
+  cin [0]
+  lt [6] [0] 32
+  if [6] ac
+  eq [2] [0] 72
+  eq [3] [0] 81
+  eq [4] [0] 57
+  add [2] [2] [3]
+  add [2] [2] [4]
+  if [2] set [9] 1
+}
+
+set [9] 0
+ca check
+if [9] ca print_yes
+eq [8] [9] 0
+if [8] ca print_no
+ac

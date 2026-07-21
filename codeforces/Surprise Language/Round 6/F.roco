@@ -1,0 +1,24 @@
+/* https://lodev.org/esolangs/roco/index.html */
+
+co store_bits{
+  eq [3] [1] 0
+  if [3] ac
+  mod [2] [1] 2
+  set [[0]] [2]
+  add [0] [0] 1
+  div [1] [1] 2
+}
+
+co print_bits{
+  eq [3] [0] 10
+  if [3] ac
+  sub [0] [0] 1
+  iout [[0]]
+}
+
+iin [1]
+set [0] 10
+ca store_bits
+ca print_bits
+cout 10
+ac

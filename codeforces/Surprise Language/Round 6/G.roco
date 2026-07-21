@@ -1,0 +1,46 @@
+/* https://lodev.org/esolangs/roco/index.html */
+
+/* 计数排序 */
+
+co init{
+  eq [1] [0] 301  /*200～301*/
+  if [1] ac
+  set [[0]] 0
+  add [0] [0] 1
+}
+
+co read_loop{
+  eq [7] [6] [5]
+  if [7] ac
+  iin [8]
+  add [9] [8] 200
+  add [[9]] [[9]] 1
+  add [6] [6] 1
+}
+
+co print_val{
+  sub [4] [0] 200
+  iout [4]
+  cout 32
+  sub [[0]] [[0]] 1
+  ac
+}
+
+co print_loop{
+  eq [1] [0] 301
+  if [1] ac
+  eq [2] [[0]] 0
+  if [2] add [0] [0] 1
+  eq [3] [2] 0
+  if [3] ca print_val
+}
+
+set [0] 200
+ca init
+iin [5]
+set [6] 0
+ca read_loop
+set [0] 201
+ca print_loop
+cout 10
+ac

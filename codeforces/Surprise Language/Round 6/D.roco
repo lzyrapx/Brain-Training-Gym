@@ -1,0 +1,22 @@
+/* https://lodev.org/esolangs/roco/index.html */
+
+co col_loop{
+  eq [3] [2] 0
+  if [3] ac
+  cout 42
+  sub [2] [2] 1
+}
+
+co row_loop{
+  gt [4] [1] [0]
+  if [4] ac
+  set [2] [1]
+  ca col_loop
+  cout 10
+  add [1] [1] 1
+}
+
+iin [0]
+set [1] 1
+ca row_loop
+ac

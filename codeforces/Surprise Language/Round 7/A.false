@@ -1,0 +1,15 @@
+{ http://progopedia.com/language/false/ }
+{ https://strlen.com/false-language/ }
+{ https://esolangs.org/wiki/FALSE }
+
+^
+'0 -
+
+{ 3 * n * (n + 1) + 1 }
+$
+1 +
+*
+3 *
+1 +
+
+.

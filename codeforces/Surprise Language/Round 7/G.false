@@ -1,0 +1,48 @@
+{ http://progopedia.com/language/false/ }
+{ https://strlen.com/false-language/ }
+{ https://esolangs.org/wiki/FALSE }
+
+{ 读函数 }
+[
+  0 n:
+  [
+    ^ c:
+    'A c; > c; 'Z > | ~    {  'A' ~ 'Z' }
+  ]
+  [
+    c;
+    n; 1 + n:
+  ] #
+] r:
+
+r;!
+r;!
+
+{ d = 0 }
+0 d:
+
+{ 遍历比较两个字符串对应位置的字符 (计算汉明距离) }
+0 i:
+[ i; n; = ~ ]  { i != n }
+[
+  i; O
+  1 i; n; + + O
+  = ~
+  [
+    d; 1 + d: { d = d + 1 }
+  ] ?
+  
+  i; 1 + i: { i = i + 1 }
+] #
+
+{ 输出答案 }
+d; .
+
+
+{ 最后要清除栈，不然会报错}
+0 i:
+[ i; n; = ~ ]
+[
+  % %    { 每次循环弹出两个字符 }
+  i; 1 + i:
+] #

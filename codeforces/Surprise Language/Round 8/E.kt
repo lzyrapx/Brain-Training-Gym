@@ -14,8 +14,8 @@ fun solve() {
     }
     val ans = ArrayList<Int>()
     for (i in n downTo 1) {
-        out.println(a[i - 1])
-        out.println(i)
+        // out.println(a[i - 1])
+        // out.println(i)
         ans.add(a[i - 1], i)
     }
     for (i in 0 until n) {

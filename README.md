@@ -72,7 +72,8 @@ val out = PrintWriter(System.out)
 var tok: StringTokenizer? = null
 
 fun main() {
-    val t = readln().toInt()
+    val t = 1
+    t = readln().toInt()
     repeat (t) {
         solve()
     }
